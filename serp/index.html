@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <title>Jarvis</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <!-- Start Of: Template ------------------------------------------>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css" /></link>
+  <link rel="stylesheet" type="text/css" href="resources/css/site.css" /></link>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+  <!-- End Of: Template ------------------------------------------>
+
+  <!-- Start Of: Angular 2 ------------------------------------------>
+  <!-- 1. Load libraries -->
+  <!-- Polyfill(s) for older browsers -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err) {
+      console.error(err);
+    });
+  </script>
+
+  <!-- End Of: Angular 2 ------------------------------------------>
+</head>
+<!-- 3. Display the application -->
+
+<body class="ui container">
+  <my-app *ngIf="appInstantiated">Loading...</my-app>
+</body>
+
+</html>
