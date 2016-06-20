@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 /* Ui Controls */
-import { SerpLabelComponent } from '../ui-controls/label/serp-label.component';
+import { SerpMessageComponent } from '../ui-controls/message/serp-message.component';
 
 @Component({
     moduleId: module.id,
     selector: 'site-header',
     templateUrl: 'header.component.html'
-    , directives: [SerpLabelComponent]
+    , directives: [SerpMessageComponent]
 })
 export class HeaderComponent implements OnInit {
     constructor() { }

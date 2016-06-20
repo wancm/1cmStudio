@@ -17,26 +17,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 /* Core Services */
 var ns_framework_1 = require('../../../core/framework/ns_framework');
-var ns_application_1 = require('../../../core/application/ns_application');
+var ns_application_1 = require('../../../core/angular2Application/ns_application');
 /* Attribute Directives */
 var serpPopUp_1 = require('../../../directives/attributes/serpPopUp');
-var SerpLabelComponent = (function (_super) {
-    __extends(SerpLabelComponent, _super);
-    function SerpLabelComponent(globalService, applicationMonitorService, broadcasterService) {
+var SerpMessageComponent = (function (_super) {
+    __extends(SerpMessageComponent, _super);
+    function SerpMessageComponent(globalService, applicationMonitorService, broadcasterService) {
         _super.call(this, ns_framework_1.Framework_Enum.UiModelDataType.String, globalService, applicationMonitorService, broadcasterService);
         this.messageId = 0;
         this.tooltipText = "";
         this.showMessageIdTooltip = this._globalService.appConfig.applicationMode != ns_framework_1.Framework_Enum.ApplicationMode.Production;
     }
-    SerpLabelComponent.prototype.ngOnInit = function () {
+    SerpMessageComponent.prototype.ngOnInit = function () {
         if (this._globalService.isDefined(this.iMessageId)) {
             // bind messageId
-            this.messageId = +this.iMessageId; // convert string to int
+            this.iModel.messageId = +this.iMessageId; // convert string to int
         }
         this.initTooltip();
     };
     // method to initiate message tooltip text
-    SerpLabelComponent.prototype.initTooltip = function () {
+    SerpMessageComponent.prototype.initTooltip = function () {
         switch (this._globalService.appConfig.applicationMode) {
             case ns_framework_1.Framework_Enum.ApplicationMode.Development:
                 // TODO: temp comment of messageId tooltip
@@ -50,28 +50,16 @@ var SerpLabelComponent = (function (_super) {
                 break;
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], SerpLabelComponent.prototype, "iMessageId", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], SerpLabelComponent.prototype, "iDefaultText", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], SerpLabelComponent.prototype, "uModel", void 0);
-    SerpLabelComponent = __decorate([
+    SerpMessageComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'serp-label',
-            templateUrl: 'serp-label.component.html',
+            selector: 'serp-message',
+            templateUrl: 'serp-message.component.html',
             directives: [serpPopUp_1.SerpPopUpDirective]
         }), 
         __metadata('design:paramtypes', [ns_framework_1.Framework_Global.GlobalService, ns_framework_1.Framework_Global.ApplicationMonitorService, ns_application_1.BroadcasterService])
-    ], SerpLabelComponent);
-    return SerpLabelComponent;
-}(ns_framework_1.BaseControl));
-exports.SerpLabelComponent = SerpLabelComponent;
-//# sourceMappingURL=serp-label.component.js.map
+    ], SerpMessageComponent);
+    return SerpMessageComponent;
+}(ns_application_1.BaseControl));
+exports.SerpMessageComponent = SerpMessageComponent;
+//# sourceMappingURL=serp-message.component.js.map

@@ -16,7 +16,7 @@ var side_menu_component_1 = require('./components/side-menu/side-menu.component'
 var footer_component_1 = require('./components/footer/footer.component');
 /* Core Services */
 var ns_framework_1 = require('./core/framework/ns_framework');
-var ns_application_1 = require('./core/application/ns_application');
+var ns_application_1 = require('./core/angular2Application/ns_application');
 var AppComponent = (function () {
     function AppComponent(appConfig) {
         this.appConfig = appConfig;
@@ -43,6 +43,7 @@ var AppComponent = (function () {
                 side_menu_component_1.SideMenuComponent,
                 footer_component_1.FooterComponent],
             providers: [ns_framework_1.Framework_Global.GlobalService,
+                ns_framework_1.Framework_Global.ApplicationMonitorService,
                 ns_application_1.AppConfig /* inject AppConfig */],
             viewProviders: [ns_application_1.BroadcasterService]
         }), 

@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 /* Core Services */
 import { Framework_Global, Framework_Enum } from './core/framework/ns_framework';
-import { BroadcasterService, AppConfig } from './core/application/ns_application';
+import { BroadcasterService, AppConfig } from './core/angular2Application/ns_application';
 
 @Component({
     moduleId: module.id,
@@ -22,6 +22,7 @@ import { BroadcasterService, AppConfig } from './core/application/ns_application
 
     /* inject services */
     , providers: [Framework_Global.GlobalService
+        , Framework_Global.ApplicationMonitorService
         , AppConfig/* inject AppConfig */]
 
     /* inject singleton services */
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
         this.appConfigInit();
     }
 
-    ngOnInit() {        
+    ngOnInit() {
         console.log('AppComponent ngOnInit()');
     }
 

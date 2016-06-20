@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ns_application_1 = require('../application/ns_application');
+var ns_application_1 = require('../angular2Application/ns_application');
 var Framework_Global;
 (function (Framework_Global) {
     var GlobalService = (function () {

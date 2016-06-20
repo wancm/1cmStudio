@@ -4,4 +4,5 @@ function __export(m) {
 }
 __export(require('./broadcaster'));
 __export(require('./AppConfig'));
+__export(require('./ui-controls/baseControl'));
 //# sourceMappingURL=ns_application.js.map

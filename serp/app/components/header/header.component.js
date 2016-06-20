@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 /* Ui Controls */
-var serp_label_component_1 = require('../ui-controls/label/serp-label.component');
+var serp_message_component_1 = require('../ui-controls/message/serp-message.component');
 var HeaderComponent = (function () {
     function HeaderComponent() {
     }
@@ -22,7 +22,7 @@ var HeaderComponent = (function () {
             moduleId: module.id,
             selector: 'site-header',
             templateUrl: 'header.component.html',
-            directives: [serp_label_component_1.SerpLabelComponent]
+            directives: [serp_message_component_1.SerpMessageComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);

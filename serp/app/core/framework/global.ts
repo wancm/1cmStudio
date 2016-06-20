@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Framework_Enum, Framework_Interface } from './ns_framework';
-import { AppConfig } from '../application/ns_application';
+import { AppConfig } from '../angular2Application/ns_application';
 
 export namespace Framework_Global {
     @Injectable()

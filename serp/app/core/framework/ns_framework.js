@@ -4,5 +4,5 @@ function __export(m) {
 }
 __export(require('./global'));
 __export(require('./enum'));
-__export(require('./ui-controls/baseControl'));
+__export(require('./ui-controls/baseModel'));
 //# sourceMappingURL=ns_framework.js.map

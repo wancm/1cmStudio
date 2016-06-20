@@ -4,23 +4,19 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { RuntimeCompiler } from '@angular/compiler/src/runtime_compiler';
 
 /* Core Services */
-import { Framework_Global, Framework_Interface, Framework_Enum, BaseControl } from '../../../core/framework/ns_framework';
-import { BroadcasterService } from '../../../core/application/ns_application';
+import { Framework_Global, Framework_Interface, Framework_Enum, BaseUiModel } from '../../../core/framework/ns_framework';
+import { BroadcasterService, BaseControl } from '../../../core/angular2Application/ns_application';
 
 /* Attribute Directives */
 import { SerpPopUpDirective } from '../../../directives/attributes/serpPopUp';
 
 @Component({
     moduleId: module.id,
-    selector: 'serp-label',
-    templateUrl: 'serp-label.component.html'
+    selector: 'serp-message',
+    templateUrl: 'serp-message.component.html'
     , directives: [SerpPopUpDirective]
 })
-export class SerpLabelComponent extends BaseControl implements OnInit {
-    @Input() iMessageId: string;
-    @Input() iDefaultText: string;
-    @Input() uModel: Framework_Interface.IUiModel;
-
+export class SerpMessageComponent extends BaseControl implements OnInit {
     private showMessageIdTooltip: boolean;
 
     public messageId: number = 0;
@@ -38,7 +34,7 @@ export class SerpLabelComponent extends BaseControl implements OnInit {
     ngOnInit() {
         if (this._globalService.isDefined(this.iMessageId)) {
             // bind messageId
-            this.messageId = +this.iMessageId; // convert string to int
+            this.iModel.messageId = +this.iMessageId; // convert string to int
         }
         
         this.initTooltip();
