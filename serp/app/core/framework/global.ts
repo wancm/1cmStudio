@@ -7,7 +7,7 @@ export namespace Framework_Global {
     export class GlobalService {
         public appConfig: Framework_Interface.IAppConfig;
 
-        constructor(config: AppConfig) { 
+        constructor(config: AppConfig) {
             this.appConfig = config;
         }
 
@@ -24,6 +24,33 @@ export namespace Framework_Global {
                 });
             }
             return value;
+        }
+    }
+
+    export class ApplicationMonitorService {
+        private _appConfig: Framework_Interface.IAppConfig;
+        private _autoNumber: number; // use for generating unique control id
+
+        public ControlMonitor: Framework_Interface.IControlMonitor[];
+
+        constructor(config: AppConfig) {
+            this._appConfig = config;
+
+            // initiate auto number starts with 0
+            this._autoNumber = 0;
+        }
+
+        generateControlNumber(dataType: Framework_Enum.UiModelDataType): number {
+            this._autoNumber++;
+
+            // add new control generating log
+            this.ControlMonitor.push({
+                controlDataType: dataType
+                , controlNumber: this._autoNumber
+                , url: ''
+            });
+
+            return this._autoNumber;
         }
     }
 }

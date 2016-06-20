@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { RuntimeCompiler } from '@angular/compiler/src/runtime_compiler';
 
 /* Core Services */
-import { Framework_Global, Framework_Interface, Framework_Enum } from '../../../core/framework/ns_framework';
+import { Framework_Global, Framework_Interface, Framework_Enum, BaseControl } from '../../../core/framework/ns_framework';
 import { BroadcasterService } from '../../../core/application/ns_application';
 
 /* Attribute Directives */
@@ -16,51 +16,32 @@ import { SerpPopUpDirective } from '../../../directives/attributes/serpPopUp';
     templateUrl: 'serp-label.component.html'
     , directives: [SerpPopUpDirective]
 })
-export class SerpLabelComponent implements OnInit {
+export class SerpLabelComponent extends BaseControl implements OnInit {
     @Input() iMessageId: string;
     @Input() iDefaultText: string;
     @Input() uModel: Framework_Interface.IUiModel;
 
     private showMessageIdTooltip: boolean;
-    private prefixNoDefinedAlert: string = "[Default Text: {0}]";
 
     public messageId: number = 0;
-    public displayText: string = "";
     public tooltipText: string = "";
 
-    constructor(private _globalService: Framework_Global.GlobalService
+    constructor(globalService: Framework_Global.GlobalService
+        , applicationMonitorService: Framework_Global.ApplicationMonitorService
         , broadcasterService: BroadcasterService) {
 
-        // subscribe onLanguageChange event
-        broadcasterService.onChangeLanguage$.subscribe(languageId => this.onLanguageChange(languageId))
+        super(Framework_Enum.UiModelDataType.String, globalService, applicationMonitorService, broadcasterService);
 
         this.showMessageIdTooltip = this._globalService.appConfig.applicationMode != Framework_Enum.ApplicationMode.Production;
     }
 
     ngOnInit() {
         if (this._globalService.isDefined(this.iMessageId)) {
+            // bind messageId
             this.messageId = +this.iMessageId; // convert string to int
         }
-
-        this.intDisplayText();
+        
         this.initTooltip();
-    }
-
-    // method to change display text depends of current language
-    onLanguageChange(languageId: number): void {
-    }
-
-    // method to initiate message display text
-    intDisplayText(): void {
-        // if messageId is not defined or messageId is 0
-        if (!this._globalService.isDefined(this.messageId)
-            || this.messageId == 0) {
-            // default displayText to input defaultText
-            //this.displayText = this._globalService.stringFormat(this.prefixNoDefinedAlert, this.iDefaultText);
-            this.displayText = this.iDefaultText;
-        } else {
-            this.displayText = "[Retrieval message from server not implemented yet]";
-        }
     }
 
     // method to initiate message tooltip text

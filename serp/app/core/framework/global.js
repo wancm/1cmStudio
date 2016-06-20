@@ -40,5 +40,24 @@ var Framework_Global;
         return GlobalService;
     }());
     Framework_Global.GlobalService = GlobalService;
+    var ApplicationMonitorService = (function () {
+        function ApplicationMonitorService(config) {
+            this._appConfig = config;
+            // initiate auto number starts with 0
+            this._autoNumber = 0;
+        }
+        ApplicationMonitorService.prototype.generateControlNumber = function (dataType) {
+            this._autoNumber++;
+            // add new control generating log
+            this.ControlMonitor.push({
+                controlDataType: dataType,
+                controlNumber: this._autoNumber,
+                url: ''
+            });
+            return this._autoNumber;
+        };
+        return ApplicationMonitorService;
+    }());
+    Framework_Global.ApplicationMonitorService = ApplicationMonitorService;
 })(Framework_Global = exports.Framework_Global || (exports.Framework_Global = {}));
 //# sourceMappingURL=global.js.map

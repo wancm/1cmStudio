@@ -13,5 +13,13 @@ export namespace Framework_Interface {
         nValue: number;
         bValue: boolean;
         key: string;
+        messageId: number;
+        displayMessage: string;
+    }
+
+    export interface IControlMonitor {
+        controlDataType: Framework_Enum.UiModelDataType;
+        controlNumber: number;
+        url: string;
     }
 }

@@ -1,5 +1,10 @@
 /// <reference path="../../../custom-typings/semantic-ui.d.ts" />
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15,40 +20,20 @@ var ns_framework_1 = require('../../../core/framework/ns_framework');
 var ns_application_1 = require('../../../core/application/ns_application');
 /* Attribute Directives */
 var serpPopUp_1 = require('../../../directives/attributes/serpPopUp');
-var SerpLabelComponent = (function () {
-    function SerpLabelComponent(_globalService, broadcasterService) {
-        var _this = this;
-        this._globalService = _globalService;
-        this.prefixNoDefinedAlert = "[Default Text: {0}]";
+var SerpLabelComponent = (function (_super) {
+    __extends(SerpLabelComponent, _super);
+    function SerpLabelComponent(globalService, applicationMonitorService, broadcasterService) {
+        _super.call(this, ns_framework_1.Framework_Enum.UiModelDataType.String, globalService, applicationMonitorService, broadcasterService);
         this.messageId = 0;
-        this.displayText = "";
         this.tooltipText = "";
-        // subscribe onLanguageChange event
-        broadcasterService.onChangeLanguage$.subscribe(function (languageId) { return _this.onLanguageChange(languageId); });
         this.showMessageIdTooltip = this._globalService.appConfig.applicationMode != ns_framework_1.Framework_Enum.ApplicationMode.Production;
     }
     SerpLabelComponent.prototype.ngOnInit = function () {
         if (this._globalService.isDefined(this.iMessageId)) {
+            // bind messageId
             this.messageId = +this.iMessageId; // convert string to int
         }
-        this.intDisplayText();
         this.initTooltip();
-    };
-    // method to change display text depends of current language
-    SerpLabelComponent.prototype.onLanguageChange = function (languageId) {
-    };
-    // method to initiate message display text
-    SerpLabelComponent.prototype.intDisplayText = function () {
-        // if messageId is not defined or messageId is 0
-        if (!this._globalService.isDefined(this.messageId)
-            || this.messageId == 0) {
-            // default displayText to input defaultText
-            //this.displayText = this._globalService.stringFormat(this.prefixNoDefinedAlert, this.iDefaultText);
-            this.displayText = this.iDefaultText;
-        }
-        else {
-            this.displayText = "[Retrieval message from server not implemented yet]";
-        }
     };
     // method to initiate message tooltip text
     SerpLabelComponent.prototype.initTooltip = function () {
@@ -84,9 +69,9 @@ var SerpLabelComponent = (function () {
             templateUrl: 'serp-label.component.html',
             directives: [serpPopUp_1.SerpPopUpDirective]
         }), 
-        __metadata('design:paramtypes', [ns_framework_1.Framework_Global.GlobalService, ns_application_1.BroadcasterService])
+        __metadata('design:paramtypes', [ns_framework_1.Framework_Global.GlobalService, ns_framework_1.Framework_Global.ApplicationMonitorService, ns_application_1.BroadcasterService])
     ], SerpLabelComponent);
     return SerpLabelComponent;
-}());
+}(ns_framework_1.BaseControl));
 exports.SerpLabelComponent = SerpLabelComponent;
 //# sourceMappingURL=serp-label.component.js.map
