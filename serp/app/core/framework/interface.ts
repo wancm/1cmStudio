@@ -17,8 +17,7 @@ export namespace Framework_Interface {
         displayMessage: string;
     }
 
-    export interface IControlMonitor {
-        controlDataType: Framework_Enum.UiModelDataType;
+    export interface IControlMonitor {        
         controlNumber: number;
         url: string;
     }

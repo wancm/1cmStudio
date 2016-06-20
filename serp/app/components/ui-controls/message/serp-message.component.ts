@@ -25,18 +25,13 @@ export class SerpMessageComponent extends BaseControl implements OnInit {
     constructor(globalService: Framework_Global.GlobalService
         , applicationMonitorService: Framework_Global.ApplicationMonitorService
         , broadcasterService: BroadcasterService) {
-
         super(Framework_Enum.UiModelDataType.String, globalService, applicationMonitorService, broadcasterService);
 
         this.showMessageIdTooltip = this._globalService.appConfig.applicationMode != Framework_Enum.ApplicationMode.Production;
     }
 
     ngOnInit() {
-        if (this._globalService.isDefined(this.iMessageId)) {
-            // bind messageId
-            this.iModel.messageId = +this.iMessageId; // convert string to int
-        }
-        
+        this.baseInit(Framework_Enum.UiModelDataType.String);
         this.initTooltip();
     }
 

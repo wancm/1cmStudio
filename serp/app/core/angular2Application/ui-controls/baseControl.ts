@@ -12,17 +12,28 @@ export class BaseControl {
 
     constructor(dataType: Framework_Enum.UiModelDataType
         , protected _globalService: Framework_Global.GlobalService
-        , protected _applicationMonitor: Framework_Global.ApplicationMonitorService
+        , protected _applicationMonitorService: Framework_Global.ApplicationMonitorService
         , protected _broadcasterService: BroadcasterService) {
 
         // subscribe onLanguageChange event
         this._broadcasterService.onChangeLanguage$.subscribe(languageId => this.onLanguageChange(languageId))
 
-        this.setDataType(dataType);
+        this.initUiModel();
     }
 
-    setDataType(dataType: Framework_Enum.UiModelDataType): void {
-        this.iModel.dataType = dataType;
+    protected baseInit(dataType: Framework_Enum.UiModelDataType): void {
+        if (this._globalService.isDefined(this.iMessageId)) {
+            // bind messageId
+            this.iModel.messageId = +this.iMessageId; // convert string to int
+        }
+        this.iModel.defaultMessage = this.iDefaultText;
+        this.iModel.init(dataType);
+    }
+
+    initUiModel(): void {
+        if (!this._globalService.isDefined(this.iModel)) {
+            this.iModel = new BaseUiModel(this._globalService, this._applicationMonitorService);
+        }
     }
 
     // method to change display text depends of current language

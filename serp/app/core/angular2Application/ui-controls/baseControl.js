@@ -12,17 +12,27 @@ var core_1 = require('@angular/core');
 /* Core Services */
 var ns_framework_1 = require('../../framework/ns_framework');
 var BaseControl = (function () {
-    function BaseControl(dataType, _globalService, _applicationMonitor, _broadcasterService) {
+    function BaseControl(dataType, _globalService, _applicationMonitorService, _broadcasterService) {
         var _this = this;
         this._globalService = _globalService;
-        this._applicationMonitor = _applicationMonitor;
+        this._applicationMonitorService = _applicationMonitorService;
         this._broadcasterService = _broadcasterService;
         // subscribe onLanguageChange event
         this._broadcasterService.onChangeLanguage$.subscribe(function (languageId) { return _this.onLanguageChange(languageId); });
-        this.setDataType(dataType);
+        this.initUiModel();
     }
-    BaseControl.prototype.setDataType = function (dataType) {
-        this.iModel.dataType = dataType;
+    BaseControl.prototype.baseInit = function (dataType) {
+        if (this._globalService.isDefined(this.iMessageId)) {
+            // bind messageId
+            this.iModel.messageId = +this.iMessageId; // convert string to int
+        }
+        this.iModel.defaultMessage = this.iDefaultText;
+        this.iModel.init(dataType);
+    };
+    BaseControl.prototype.initUiModel = function () {
+        if (!this._globalService.isDefined(this.iModel)) {
+            this.iModel = new ns_framework_1.BaseUiModel(this._globalService, this._applicationMonitorService);
+        }
     };
     // method to change display text depends of current language
     BaseControl.prototype.onLanguageChange = function (languageId) {

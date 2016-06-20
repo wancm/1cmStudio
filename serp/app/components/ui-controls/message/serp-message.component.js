@@ -29,10 +29,7 @@ var SerpMessageComponent = (function (_super) {
         this.showMessageIdTooltip = this._globalService.appConfig.applicationMode != ns_framework_1.Framework_Enum.ApplicationMode.Production;
     }
     SerpMessageComponent.prototype.ngOnInit = function () {
-        if (this._globalService.isDefined(this.iMessageId)) {
-            // bind messageId
-            this.iModel.messageId = +this.iMessageId; // convert string to int
-        }
+        this.baseInit(ns_framework_1.Framework_Enum.UiModelDataType.String);
         this.initTooltip();
     };
     // method to initiate message tooltip text

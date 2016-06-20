@@ -17,12 +17,12 @@ export class BaseUiModel implements Framework_Interface.IUiModel {
 
     constructor(protected _globalService: Framework_Global.GlobalService
         , protected _applicationMonitor: Framework_Global.ApplicationMonitorService) {
-        
-        this.initDisplayText();
     }
 
-    initUiModel(dataType: Framework_Enum.UiModelDataType): void {        
+    public init(dataType: Framework_Enum.UiModelDataType): void {
+        this.dataType = dataType;
         this.cid = this._applicationMonitor.generateControlNumber(this.dataType).toString() + '_' + this.dataType.toString();
+        this.initDisplayText();
     }
 
     // method to initiate message display text

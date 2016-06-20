@@ -42,6 +42,7 @@ var Framework_Global;
     Framework_Global.GlobalService = GlobalService;
     var ApplicationMonitorService = (function () {
         function ApplicationMonitorService(config) {
+            this.ControlMonitor = [];
             this._appConfig = config;
             // initiate auto number starts with 0
             this._autoNumber = 0;
@@ -50,12 +51,15 @@ var Framework_Global;
             this._autoNumber++;
             // add new control generating log
             this.ControlMonitor.push({
-                controlDataType: dataType,
                 controlNumber: this._autoNumber,
                 url: ''
             });
             return this._autoNumber;
         };
+        ApplicationMonitorService = __decorate([
+            core_1.Injectable(), 
+            __metadata('design:paramtypes', [ns_application_1.AppConfig])
+        ], ApplicationMonitorService);
         return ApplicationMonitorService;
     }());
     Framework_Global.ApplicationMonitorService = ApplicationMonitorService;

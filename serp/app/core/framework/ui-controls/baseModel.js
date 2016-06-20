@@ -4,10 +4,11 @@ var BaseUiModel = (function () {
         this._globalService = _globalService;
         this._applicationMonitor = _applicationMonitor;
         this.prefixNoDefinedAlert = "[Default Text: {0}]";
-        this.initDisplayText();
     }
-    BaseUiModel.prototype.initUiModel = function (dataType) {
+    BaseUiModel.prototype.init = function (dataType) {
+        this.dataType = dataType;
         this.cid = this._applicationMonitor.generateControlNumber(this.dataType).toString() + '_' + this.dataType.toString();
+        this.initDisplayText();
     };
     // method to initiate message display text
     BaseUiModel.prototype.initDisplayText = function () {

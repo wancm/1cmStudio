@@ -27,11 +27,12 @@ export namespace Framework_Global {
         }
     }
 
+    @Injectable()
     export class ApplicationMonitorService {
         private _appConfig: Framework_Interface.IAppConfig;
-        private _autoNumber: number; // use for generating unique control id
+        private _autoNumber: number; // use for generating unique control id        
 
-        public ControlMonitor: Framework_Interface.IControlMonitor[];
+        public ControlMonitor: Framework_Interface.IControlMonitor[] = [];
 
         constructor(config: AppConfig) {
             this._appConfig = config;
@@ -45,8 +46,7 @@ export namespace Framework_Global {
 
             // add new control generating log
             this.ControlMonitor.push({
-                controlDataType: dataType
-                , controlNumber: this._autoNumber
+                controlNumber: this._autoNumber
                 , url: ''
             });
 
