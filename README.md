@@ -1,2 +1,2 @@
-# newGitTest
+# 1cm Studio
 Hello Git
