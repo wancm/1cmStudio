@@ -1,1 +1,2 @@
 # newGitTest
+Hello Git
