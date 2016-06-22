@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 /* Ui Controls */
 import { SerpMessageComponent } from '../../ui-controls/message/serp-message.component';
@@ -7,7 +8,8 @@ import { SerpMessageComponent } from '../../ui-controls/message/serp-message.com
     moduleId: module.id,
     selector: 'site-header',
     templateUrl: 'header.component.html'
-    , directives: [SerpMessageComponent]
+    , directives: [ROUTER_DIRECTIVES
+        , SerpMessageComponent]
 })
 export class HeaderComponent implements OnInit {
     constructor() { }

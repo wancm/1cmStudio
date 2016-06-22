@@ -1,8 +1,6 @@
 /* Core */
 import { Component, OnInit } from '@angular/core';
-import {HTTP_PROVIDERS} from '@angular//http';
-import 'rxjs/Rx'; //Load all features
-import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 /* Templates */
 import { HeaderComponent } from './components/templates/header/header.component';
@@ -12,8 +10,6 @@ import { FooterComponent } from './components/templates/footer/footer.component'
 /* Core Services */
 import { Framework_Global, Framework_Enum } from './core/framework/ns_framework';
 import { BroadcasterService, AppConfig } from './core/angular2Application/ns_application';
-
-import { SerpRoute } from '/route';
 
 @Component({
     moduleId: module.id,
@@ -27,37 +23,17 @@ import { SerpRoute } from '/route';
         , FooterComponent]
 
     /* inject services */
-    , providers: [HTTP_PROVIDERS
-        , ROUTER_PROVIDERS
-        , Framework_Global.GlobalService
+    , providers: [Framework_Global.GlobalService
         , Framework_Global.ApplicationMonitorService
         , AppConfig/* inject AppConfig */]
 
     /* inject singleton services */
     , viewProviders: [BroadcasterService]
 })
-@RouteConfig([
-    {
-        path: '/welcome',
-        name: 'Welcome',
-        component: WelcomeComponent,
-        useAsDefault: true
-    }
-    , {
-        path: '/proudcts',
-        name: 'Products',
-        component: ProductListComponent
-    }
-    , {
-        path: '/product/:id',
-        name: 'ProductDetail',
-        component: ProductDetailComponent
-    }
-])
 export class AppComponent implements OnInit {
     appInstantiated: boolean = false;
 
-    constructor(private appConfig: AppConfig) {        
+    constructor(private appConfig: AppConfig) {
         this.appConfigInit();
     }
 

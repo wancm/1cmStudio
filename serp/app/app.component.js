@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 /* Core */
 var core_1 = require('@angular/core');
-var http_1 = require('@angular//http');
-require('rxjs/Rx'); //Load all features
 var router_1 = require('@angular/router');
 /* Templates */
 var header_component_1 = require('./components/templates/header/header.component');
@@ -46,31 +44,11 @@ var AppComponent = (function () {
                 header_component_1.HeaderComponent,
                 side_menu_component_1.SideMenuComponent,
                 footer_component_1.FooterComponent],
-            providers: [http_1.HTTP_PROVIDERS,
-                router_1.ROUTER_PROVIDERS,
-                ns_framework_1.Framework_Global.GlobalService,
+            providers: [ns_framework_1.Framework_Global.GlobalService,
                 ns_framework_1.Framework_Global.ApplicationMonitorService,
                 ns_application_1.AppConfig /* inject AppConfig */],
             viewProviders: [ns_application_1.BroadcasterService]
-        }),
-        router_1.RouteConfig([
-            {
-                path: '/welcome',
-                name: 'Welcome',
-                component: WelcomeComponent,
-                useAsDefault: true
-            },
-            {
-                path: '/proudcts',
-                name: 'Products',
-                component: ProductListComponent
-            },
-            {
-                path: '/product/:id',
-                name: 'ProductDetail',
-                component: ProductDetailComponent
-            }
-        ]), 
+        }), 
         __metadata('design:paramtypes', [ns_application_1.AppConfig])
     ], AppComponent);
     return AppComponent;

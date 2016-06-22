@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 /* Ui Controls */
 var serp_message_component_1 = require('../../ui-controls/message/serp-message.component');
 var HeaderComponent = (function () {
@@ -22,7 +23,8 @@ var HeaderComponent = (function () {
             moduleId: module.id,
             selector: 'site-header',
             templateUrl: 'header.component.html',
-            directives: [serp_message_component_1.SerpMessageComponent]
+            directives: [router_1.ROUTER_DIRECTIVES,
+                serp_message_component_1.SerpMessageComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);
