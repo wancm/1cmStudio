@@ -39,13 +39,14 @@ export class SerpMessageComponent extends BaseControl implements OnInit {
     initTooltip(): void {
         switch (this._globalService.appConfig.applicationMode) {
             case Framework_Enum.ApplicationMode.Development:
-                // TODO: temp comment of messageId tooltip
                 /*
+                // TODO: temp comment of messageId tooltip
                 if (this._globalService.isDefined(this.messageId)) {
                     this.tooltipText = this._globalService.stringFormat("{0}", this.messageId.toString());
                 }
-                */
+                */                
                 break;
+
             default:
                 break;
         }

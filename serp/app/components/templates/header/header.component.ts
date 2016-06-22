@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /* Ui Controls */
-import { SerpMessageComponent } from '../ui-controls/message/serp-message.component';
+import { SerpMessageComponent } from '../../ui-controls/message/serp-message.component';
 
 @Component({
     moduleId: module.id,

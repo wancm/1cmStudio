@@ -20,7 +20,8 @@ var BaseUiModel = (function () {
             this.displayMessage = this.defaultMessage;
         }
         else {
-            this.displayMessage = "[Retrieval message from server not implemented yet]";
+            // this.displayMessage = "[Retrieval message from server not implemented yet]";
+            this.displayMessage = this.defaultMessage;
         }
     };
     // event method to be invoked when changed of current language

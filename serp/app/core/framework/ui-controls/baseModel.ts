@@ -34,7 +34,8 @@ export class BaseUiModel implements Framework_Interface.IUiModel {
             //this.displayText = this._globalService.stringFormat(this.prefixNoDefinedAlert, this.defaultMessage);
             this.displayMessage = this.defaultMessage;
         } else {
-            this.displayMessage = "[Retrieval message from server not implemented yet]";
+            // this.displayMessage = "[Retrieval message from server not implemented yet]";
+            this.displayMessage = this.defaultMessage;
         }
     }
 

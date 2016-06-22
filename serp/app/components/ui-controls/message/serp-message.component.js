@@ -36,8 +36,8 @@ var SerpMessageComponent = (function (_super) {
     SerpMessageComponent.prototype.initTooltip = function () {
         switch (this._globalService.appConfig.applicationMode) {
             case ns_framework_1.Framework_Enum.ApplicationMode.Development:
-                // TODO: temp comment of messageId tooltip
                 /*
+                // TODO: temp comment of messageId tooltip
                 if (this._globalService.isDefined(this.messageId)) {
                     this.tooltipText = this._globalService.stringFormat("{0}", this.messageId.toString());
                 }

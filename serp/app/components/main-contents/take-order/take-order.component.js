@@ -9,24 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-/* Ui Controls */
-var serp_message_component_1 = require('../ui-controls/message/serp-message.component');
-var HeaderComponent = (function () {
-    function HeaderComponent() {
+var TakeOrderComponent = (function () {
+    function TakeOrderComponent() {
     }
-    HeaderComponent.prototype.ngOnInit = function () {
-        console.log('HeaderComponent ngOnInit()');
-    };
-    HeaderComponent = __decorate([
+    TakeOrderComponent.prototype.ngOnInit = function () { };
+    TakeOrderComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'site-header',
-            templateUrl: 'header.component.html',
-            directives: [serp_message_component_1.SerpMessageComponent]
+            selector: 'take-order',
+            templateUrl: 'take-order.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], HeaderComponent);
-    return HeaderComponent;
+    ], TakeOrderComponent);
+    return TakeOrderComponent;
 }());
-exports.HeaderComponent = HeaderComponent;
-//# sourceMappingURL=header.component.js.map
+exports.TakeOrderComponent = TakeOrderComponent;
+//# sourceMappingURL=take-order.component.js.map
