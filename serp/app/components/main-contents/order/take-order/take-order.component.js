@@ -1,3 +1,4 @@
+/// <reference path="../../../../../typings/globals/jquery/jquery.d.ts" />
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -14,8 +15,11 @@ var serp_message_component_1 = require('../../../ui-controls/message/serp-messag
 var TakeOrderComponent = (function () {
     function TakeOrderComponent() {
     }
-    TakeOrderComponent.prototype.ngOnInit = function () { };
+    TakeOrderComponent.prototype.ngOnInit = function () {
+        console.log('1');
+    };
     TakeOrderComponent.prototype.onAddItemClick = function () {
+        $("#modalAddItem").modal('show');
     };
     TakeOrderComponent = __decorate([
         core_1.Component({

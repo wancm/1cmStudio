@@ -1,8 +1,12 @@
 
+/// <reference path="../../../../../typings/globals/jquery/jquery.d.ts" />
+
 import { Component, OnInit } from '@angular/core';
 
 /* Ui Controls */
 import { SerpMessageComponent } from '../../../ui-controls/message/serp-message.component';
+
+declare var JQuery: JQuery;
 
 @Component({
     moduleId: module.id,
@@ -13,8 +17,11 @@ import { SerpMessageComponent } from '../../../ui-controls/message/serp-message.
 export class TakeOrderComponent implements OnInit {
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        console.log('1');
+     }
 
     onAddItemClick(): void {
+        $("#modalAddItem").modal('show');        
     }
 }
