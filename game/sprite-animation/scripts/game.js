@@ -1,6 +1,6 @@
-/// <reference path="jquery-2.2.4.js" />
-var Player = (function () {
-    function Player(_canvasWidth, _canvasHeight) {
+/// <reference path="../typings/jquery/jquery.d.ts" />
+class Player {
+    constructor(_canvasWidth, _canvasHeight) {
         this._canvasWidth = _canvasWidth;
         this._canvasHeight = _canvasHeight;
         this._tickCount = 0;
@@ -21,37 +21,37 @@ var Player = (function () {
         console.log(this._frameWidth);
         console.log(this._frameHeight);
     }
-    Player.prototype.walkForward = function () {
+    walkForward() {
         if (!this.nextFrame())
             return;
         var frame = this.walkForwardFrame[this.getNextFrameIndex(this.walkForwardFrame)];
         this.updateCurrentFrameCoordinate(frame);
-    };
-    Player.prototype.walkBackward = function () {
+    }
+    walkBackward() {
         if (!this.nextFrame())
             return;
         var frame = this.walkBackwardFrame[this.getNextFrameIndex(this.walkBackwardFrame)];
         this.updateCurrentFrameCoordinate(frame);
-    };
-    Player.prototype.walkLeft = function () {
+    }
+    walkLeft() {
         if (!this.nextFrame())
             return;
         var frame = this.walkLeftFrame[this.getNextFrameIndex(this.walkLeftFrame)];
         this.updateCurrentFrameCoordinate(frame);
-    };
-    Player.prototype.walkRight = function () {
+    }
+    walkRight() {
         if (!this.nextFrame())
             return;
         var frame = this.walkRightFrame[this.getNextFrameIndex(this.walkRightFrame)];
         this.updateCurrentFrameCoordinate(frame);
-    };
-    Player.prototype.updateCurrentFrameCoordinate = function (frame) {
+    }
+    updateCurrentFrameCoordinate(frame) {
         this.currentSpriteCoordinate.x = frame.x;
         this.currentSpriteCoordinate.y = frame.y;
         this.currentSpriteCoordinate.sx = frame.x * this._frameWidth;
         this.currentSpriteCoordinate.sy = frame.y * this._frameHeight;
-    };
-    Player.prototype.getNextFrameIndex = function (frames) {
+    }
+    getNextFrameIndex(frames) {
         for (var i = 0; i < frames.length; i++) {
             // check if currentFrame are within current action frame sets
             if (frames[i].x == this.currentSpriteCoordinate.x
@@ -62,23 +62,23 @@ var Player = (function () {
             }
         }
         return 0;
-    };
-    Player.prototype.nextFrame = function () {
+    }
+    nextFrame() {
         if (this._tickCount > this._ticksPerFrame) {
             this._tickCount = 0; // reset tick count
             return true;
         }
         return false;
-    };
-    Player.prototype.tick = function (canvas, keysDown) {
+    }
+    tick(canvas, keysDown) {
         this._tickCount++;
         // update user input
         this._keysDown = keysDown;
         this._canvas = canvas;
         this.update();
         this.draw();
-    };
-    Player.prototype.update = function () {
+    }
+    update() {
         // left
         if (this._keysDown[37]) {
             this.walkLeft();
@@ -99,8 +99,8 @@ var Player = (function () {
             this.walkForward();
             this.PlayerY += 10;
         }
-    };
-    Player.prototype.draw = function () {
+    }
+    draw() {
         /*
             context.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)
 
@@ -117,16 +117,14 @@ var Player = (function () {
         this.PlayerX = this.clamp(this.PlayerX, 0, this._canvasWidth - this._frameWidth);
         this.PlayerY = this.clamp(this.PlayerY, 0, this._canvasHeight - this._frameHeight);
         this._canvas.drawImage(this._image, this.currentSpriteCoordinate.sx, this.currentSpriteCoordinate.sy, this._frameWidth, this._frameHeight, this.PlayerX, this.PlayerY, this._frameWidth, this._frameHeight);
-    };
+    }
     // clamp to a range
-    Player.prototype.clamp = function (x, min, max) {
+    clamp(x, min, max) {
         return x < min ? min : (x > max ? max : x);
-    };
-    return Player;
-}());
-var Game = (function () {
-    function Game() {
-        var _this = this;
+    }
+}
+class Game {
+    constructor() {
         this.canvasWidth = 800;
         this.canvasHeight = 600;
         this.keysDown = [];
@@ -137,34 +135,33 @@ var Game = (function () {
         this.gameCanvas.attr('height', this.canvasHeight);
         this._player = new Player(this.canvasWidth, this.canvasHeight);
         this.keysDown = [];
-        $('body').bind('keydown', function (e) {
-            _this.keysDown[e.which] = true;
+        $('body').bind('keydown', (e) => {
+            this.keysDown[e.which] = true;
         });
-        $('body').bind('keyup', function (e) {
-            _this.keysDown[e.which] = false;
+        $('body').bind('keyup', (e) => {
+            this.keysDown[e.which] = false;
         });
         // game loop
-        setInterval(function () {
-            _this.gameLoop();
+        setInterval(() => {
+            this.gameLoop();
         }, 1000 / this.FPS);
     }
-    Game.prototype.gameLoop = function () {
+    gameLoop() {
         // get user input
         // update
         this.update();
         // draw
         this.draw();
-    };
-    Game.prototype.update = function () {
+    }
+    update() {
         this._player.tick(this.canvas, this.keysDown);
-    };
-    Game.prototype.draw = function () {
+    }
+    draw() {
         // clearing last drew image so it won't show on screen
         this.canvas.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.canvas.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
         this._player.draw();
-    };
-    return Game;
-}());
+    }
+}
 var game = new Game();
 //# sourceMappingURL=game.js.map

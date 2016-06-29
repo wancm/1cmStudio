@@ -1,4 +1,4 @@
-/// <reference path="jquery-2.2.4.js" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
 
 interface SpriteFrame {
     x: number;
@@ -165,6 +165,8 @@ class Player {
     }
 }
 
+
+
 class Game {
     private canvasWidth: number = 800;
     private canvasHeight: number = 600;
@@ -177,7 +179,7 @@ class Game {
     private _player: Player;
 
     constructor() {
-        this.gameCanvas = $('#gameCanvas')
+        this.gameCanvas = $('#gameCanvas');
         this.canvas = this.gameCanvas[0].getContext('2d');
 
         this.gameCanvas.attr('width', this.canvasWidth);
