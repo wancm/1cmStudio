@@ -34,6 +34,20 @@ class PathAcessible {
         if (!this.isTileMarked(downX, downY)) {
             this._markedTile.push({ x: downX, y: downY });
         }
+
+        var leftX = x + this._tileWidth * -1;
+        var leftY = y;
+
+        if (!this.isTileMarked(leftX, leftY)) {
+            this._markedTile.push({ x: leftX, y: leftY });
+        }
+
+        var topX = x;
+        var topY = y  + this._tileHeight * -1;
+
+        if (!this.isTileMarked(topX, topY)) {
+            this._markedTile.push({ x: topX, y: topY });
+        }
     }
 
     private isTileMarked(x: number, y: number): boolean {
